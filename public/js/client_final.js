@@ -19,7 +19,7 @@ loadGifQuery = ()=>{
     var mygiphy = new XMLHttpRequest()
     mygiphy.open('GET',gifurl+chars+filters)
     mygiphy.onload = ()=>{
-        console.log(JSON.parse(mygiphy.responseText))
+        //console.log(JSON.parse(mygiphy.responseText))
         const payload = JSON.parse(mygiphy.responseText)
         document.querySelector('#title').innerHTML = payload.data[0].title.replace("GIF","").toLowerCase()
         .split(' ')
@@ -33,7 +33,7 @@ loadGifQuery = ()=>{
 }
 
 createHTML = (a)=>{
-    console.log("crazyy")
+    //console.log("crazyy")
     for(var i=1; i<a.length;i++){
         var s = i.toString(10)
         document.querySelector('#gifholder'+s+'_link').href = a[i].images.original.url
