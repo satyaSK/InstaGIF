@@ -18,8 +18,10 @@ window.addEventListener('load', (e)=>{
 
 gifInput.addEventListener('keyup',(e)=>{
     //e.preventDefault()
+    if ( (e.which==8)||(e.which <= 90 && e.which >= 48)){
     loadGifQuery()
     loadmusic()
+    }
     
 })
 
@@ -62,14 +64,15 @@ instagif.addEventListener('click',(e)=>{
 loadmusic = ()=>{
     var xhr = new XMLHttpRequest()
     var chars = gifInput.value
-    xhr.open('GET','https://api.deezer.com/search?lang=en,hi&limit=3&output=json&q='+chars)//https://cors-anywhere.herokuapp.com/
+    xhr.open('GET','https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?lang=en,hi&limit=3&output=json&q='+chars)//https://cors-anywhere.herokuapp.com/
     xhr.onload = ()=>{
         var music = JSON.parse(xhr.responseText)
         var rand = getrandom(music.data)
         console.log(music)
         document.querySelector('#music').src = music.data[rand].preview
+        
+        // document.getElementById('music').muted = false
         // document.getElementById("music").play()
-        //document.getElementById('music_muter').muted = false
         
     }
     // xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
@@ -83,7 +86,7 @@ getrandom = (jsonfiledata)=>{
 }
 
 loadIntro = ()=>{
-    random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","kal ho na ho","koi mil gaya","dilwale","mission impossible","hrithik roshan "]
+    random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","eminem","kal ho na ho","koi mil gaya","dilwale","mission impossible","hrithik roshan "]
     gifInput.value = random[Math.floor(Math.random() * random.length)];
     loadmusic()
     loadGifQuery()
