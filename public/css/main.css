@@ -112,5 +112,9 @@ input:focus{
 	transform: scale(1.08); 
 }
 
+.haha{
+     animation: floating-text 2s ease alternate infinite;
+  }
+
 
 
