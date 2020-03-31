@@ -18,7 +18,7 @@ window.addEventListener('load', (e)=>{
 
 gifInput.addEventListener('keyup',(e)=>{
     //e.preventDefault()
-    if ( (e.which==34)||(e.which==8)||(e.which <= 90 && e.which >= 48)){
+    if ( (e.which==32)||(e.which==8)||(e.which <= 90 && e.which >= 48)){
     loadGifQuery()
     loadmusic()
     }
@@ -68,16 +68,9 @@ loadmusic = ()=>{
     xhr.onload = ()=>{
         var music = JSON.parse(xhr.responseText)
         var rand = getrandom(music.data)
-        console.log(music)
+        //console.log(music)
         document.querySelector('#music').src = music.data[rand].preview
-        
-        // document.getElementById('music').muted = false
-        // document.getElementById("music").play()
-        
     }
-    // xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
-    // xhr.setRequestHeader('Access-Control-Allow-Headers','Content-Type')
-    // xhr.setRequestHeader('Content-Type', 'json/application');
     xhr.send()
 }
 
