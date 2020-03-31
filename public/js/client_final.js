@@ -18,7 +18,7 @@ window.addEventListener('load', (e)=>{
 
 gifInput.addEventListener('keyup',(e)=>{
     //e.preventDefault()
-    if ( (e.which==8)||(e.which <= 90 && e.which >= 48)){
+    if ( (e.which==34)||(e.which==8)||(e.which <= 90 && e.which >= 48)){
     loadGifQuery()
     loadmusic()
     }
