@@ -5,7 +5,6 @@ const instagif = document.querySelector('#joey')
 const body = document.querySelector('#body')
 
 
-
 API_key = 'Upu1PbcVEcikCbr4wFjRcrND4OeSfbIS'
 filters = '&limit=7'
 gifurl = 'https://api.giphy.com/v1/gifs/search?api_key=Upu1PbcVEcikCbr4wFjRcrND4OeSfbIS&q='
@@ -19,8 +18,8 @@ window.addEventListener('load', (e)=>{
 gifInput.addEventListener('keyup',(e)=>{
     //e.preventDefault()
     if ( (e.which==32)||(e.which==8)||(e.which <= 90 && e.which >= 48)){
-    loadGifQuery()
     loadmusic()
+    loadGifQuery()
     }
     
 })
@@ -57,8 +56,9 @@ instagif.addEventListener('click',(e)=>{
     e.preventDefault()
     random = ["joey","trump","justin beiber","macklemore","putin","tom cruise","chandler","monica","sacred games","the office","mark zuckerburg","facepalm","dab","bollywood","cute baby","the social network"]
     gifInput.value =  random[Math.floor(Math.random() * random.length)]
-    loadGifQuery()
     loadmusic()
+    loadGifQuery()
+    
 })
 
 loadmusic = ()=>{
@@ -68,8 +68,9 @@ loadmusic = ()=>{
     xhr.onload = ()=>{
         var music = JSON.parse(xhr.responseText)
         var rand = getrandom(music.data)
-        //console.log(music)
+        //console.log(music.data)
         document.querySelector('#music').src = music.data[rand].preview
+        document.querySelector('#music').play()
     }
     xhr.send()
 }
@@ -79,10 +80,12 @@ getrandom = (jsonfiledata)=>{
 }
 
 loadIntro = ()=>{
-    random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","eminem","kal ho na ho","koi mil gaya","dilwale","mission impossible","hrithik roshan "]
+    random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","eminem","kal ho na ho","koi mil gaya","dilwale","mission impossible"]
     gifInput.value = random[Math.floor(Math.random() * random.length)];
     loadmusic()
     loadGifQuery()
 }
+
+
 
 
