@@ -3,11 +3,8 @@ const gifInput = document.querySelector('#gif')
 const trendingBtn = document.querySelector('#trends')
 const instagif = document.querySelector('#joey')
 const body = document.querySelector('#body')
-
-
-API_key = 'Upu1PbcVEcikCbr4wFjRcrND4OeSfbIS'
-filters = '&limit=7'
-gifurl = 'https://api.giphy.com/v1/gifs/search?api_key=Upu1PbcVEcikCbr4wFjRcrND4OeSfbIS&q='
+const musicBtn = document.querySelector('#musicbtn')
+const gifurl = 'https://api.giphy.com/v1/gifs/search?api_key=Upu1PbcVEcikCbr4wFjRcrND4OeSfbIS&limit=7&q='
 
 
 window.addEventListener('load', (e)=>{
@@ -27,7 +24,7 @@ gifInput.addEventListener('keyup',(e)=>{
 loadGifQuery = ()=>{
     var chars = gifInput.value
     var mygiphy = new XMLHttpRequest()
-    mygiphy.open('GET',gifurl+chars+filters)
+    mygiphy.open('GET',gifurl+chars)
     mygiphy.onload = ()=>{
         //console.log(JSON.parse(mygiphy.responseText))
         const payload = JSON.parse(mygiphy.responseText)
@@ -54,7 +51,7 @@ createHTML = (a)=>{
 
 instagif.addEventListener('click',(e)=>{
     e.preventDefault()
-    random = ["joey","trump","justin beiber","macklemore","putin","tom cruise","chandler","monica","sacred games","the office","mark zuckerburg","facepalm","dab","bollywood","cute baby","the social network"]
+    random = ["joey","trump","beiber","macklemore","putin","tom cruise","chandler","sacred games","the office","mark zuckerburg","facepalm","dab","bollywood","cute baby","the social network"]
     gifInput.value =  random[Math.floor(Math.random() * random.length)]
     loadmusic()
     loadGifQuery()
@@ -70,22 +67,51 @@ loadmusic = ()=>{
         var rand = getrandom(music.data)
         //console.log(music.data)
         document.querySelector('#music').src = music.data[rand].preview
-        document.querySelector('#music').play()
     }
     xhr.send()
 }
+
+
 
 getrandom = (jsonfiledata)=>{
     return Math.floor(Math.random() * jsonfiledata.length)
 }
 
 loadIntro = ()=>{
-    random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","eminem","kal ho na ho","koi mil gaya","dilwale","mission impossible"]
-    gifInput.value = random[Math.floor(Math.random() * random.length)];
-    loadmusic()
-    loadGifQuery()
+    
+        random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","eminem","kal ho na ho","koi mil gaya","dilwale","mission impossible"]
+        gifInput.value = random[Math.floor(Math.random() * random.length)];
+        loadmusic()
+        loadGifQuery()
+    
 }
 
+var toggle = 0
+var firstTimeOnLoad = true
 
-
-
+musicBtn.addEventListener('click',(e)=>{
+    e.preventDefault()
+    if ( toggle == 0)
+    {   
+        if (firstTimeOnLoad)
+        {
+            loadmusic()
+            firstTimeOnLoad = false
+        }
+        document.getElementById('musicbtn').style.color = '#bdbdbd'
+        document.getElementById('musicbtn').style.backgroundColor = 'white'
+        document.getElementById('music').muted = false
+        document.getElementById('musicbtn').innerHTML = "||||||||||"
+        setTimeout(()=>{document.getElementById('musicbtn').innerHTML = "Mute"},100)
+        toggle = 1
+        
+    }
+    else{
+        document.getElementById('musicbtn').style.color ='white' 
+        document.getElementById('musicbtn').style.backgroundColor = '#bdbdbd'
+        document.getElementById('music').muted = true
+        document.getElementById('musicbtn').innerHTML = "||||||||"
+        setTimeout(()=>{document.getElementById('musicbtn').innerHTML = "Music"},100)
+        toggle = 0
+    }
+})

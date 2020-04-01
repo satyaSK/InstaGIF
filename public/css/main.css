@@ -47,6 +47,36 @@ input {
     outline: none;
     color:grey;
     border-radius: 25px;
+    vertical-align: middle;
+}
+
+
+button {
+    border: solid #bdbdbd;
+    margin: 3px;
+    padding: 16px;
+    width: 10%;
+    font-weight: bold;
+    /* height: 100%; */
+    text-align: justify;
+    outline: none;
+    color:white;
+    background-color: #bdbdbd;
+    border-radius: 25px;
+    cursor: pointer; 
+    vertical-align: middle;
+}
+
+.animated-btn{
+    -webkit-transition: 0.3s ease-in-out, 
+    -webkit-transform 0.3s ease-in-out;
+	-moz-transition:  0.3s ease-in-out, 
+    -moz-transform 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out, 
+    transform 0.3s ease-in-out, ;
+}
+.animated-btn:hover {
+	transform: scale(1.05); 
 }
 
 input::placeholder{

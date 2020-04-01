@@ -10,7 +10,7 @@
 </head>
 <body class="body">
     <!-- <embed  src="" id="music" play="true" loop="true" quality="high"/> -->
-    <video type="audio/mpeg" src="" allow="autoplay" id="music" style="display:none" loop autoplay></video>
+    <video type="audio/mpeg" src="" allow="autoplay" id="music" style="display:none" loop autoplay muted></video>
     <!-- <audio src="" id="music" loop muted></audio> -->
     <div class="container-1">
         <div class="box-1">
@@ -20,8 +20,12 @@
         </div>
     
         <div class="box-2" align="center">
-            <a style="text-decoration: none;" id="joey"><h1 class="animated-gif">InstaGIF</h1></a>
-            <input value name="" type="text" placeholder="Start Typing..." id="gif" autofocus autocomplete="off" spellcheck="false" autocapitalize="on"><br>
+            <a style="text-decoration: none;cursor: pointer; " id="joey"><h1 class="animated-gif">InstaGIF</h1></a>
+            <div>
+            <input value name="" type="text" placeholder="Start Typing..." id="gif" autofocus autocomplete="off" spellcheck="false" autocapitalize="on">
+            <button class="animated-btn" id="musicbtn" style="text-align: center;">Music</button>
+            <!-- <button class="animated-btn" id="musicbtn" style="text-align: center;">Skip</button><br> -->
+            </div>
             <!-- <button id="search" visi>Search</button>
             <button id="trends">Trending</button> -->
             <h2 id="title"> </h2>
