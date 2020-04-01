@@ -130,6 +130,7 @@ input:focus{
     width: 721px;
     height: auto;
     max-height: 58vh;
+    cursor: pointer; 
     -webkit-transition: 0.3s ease-in-out, 
     -webkit-transform 0.3s ease-in-out;
 	-moz-transition:  0.3s ease-in-out, 

@@ -5,11 +5,13 @@ const instagif = document.querySelector('#joey')
 const body = document.querySelector('#body')
 const musicBtn = document.querySelector('#musicbtn')
 const gifurl = 'https://api.giphy.com/v1/gifs/search?api_key=Upu1PbcVEcikCbr4wFjRcrND4OeSfbIS&limit=7&q='
-
+let imgs = document.getElementsByTagName("img")
 
 window.addEventListener('load', (e)=>{
     //e.preventDefault()
-    loadIntro()
+    setTimeout(()=>{
+        loadIntro()
+    }, 1500)
 })
 
 gifInput.addEventListener('keyup',(e)=>{
@@ -28,12 +30,14 @@ loadGifQuery = ()=>{
     mygiphy.onload = ()=>{
         //console.log(JSON.parse(mygiphy.responseText))
         const payload = JSON.parse(mygiphy.responseText)
+        console.log(payload)
         document.querySelector('#title').innerHTML = payload.data[0].title.replace("GIF","").toLowerCase()
         .split(' ')
         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
         .join(' ');
-        document.querySelector('#gifholder_link').href = payload.data[0].images.downsized_medium.url
+        //document.querySelector('#gifholder_link').href = payload.data[0].images.downsized_medium.url
         document.querySelector('#gifholder').src = payload.data[0].images.downsized_medium.url
+        document.querySelector('#gifholder').title = payload.data[0].title
         createHTML(payload.data)
     }
     mygiphy.send()
@@ -43,8 +47,9 @@ createHTML = (a)=>{
     //console.log("crazyy")
     for(var i=1; i<a.length;i++){
         var s = i.toString(10)
-        document.querySelector('#gifholder'+s+'_link').href = a[i].images.original.url
+        //document.querySelector('#gifholder'+s+'_link').href = a[i].images.original.url
         document.querySelector('#gifholder'+s).src = a[i].images.original.url
+        document.querySelector('#gifholder'+s).title = a[i].title
     }
 }
 
@@ -79,7 +84,7 @@ getrandom = (jsonfiledata)=>{
 
 loadIntro = ()=>{
     
-        random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","eminem","kal ho na ho","koi mil gaya","dilwale","mission impossible"]
+        random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","eminem","kal ho na ho","hotline bling","koi mil gaya","dilwale","mission impossible"]
         gifInput.value = random[Math.floor(Math.random() * random.length)];
         loadmusic()
         loadGifQuery()
@@ -115,3 +120,27 @@ musicBtn.addEventListener('click',(e)=>{
         toggle = 0
     }
 })
+console.log(imgs)
+
+//var inputElem = document.getElementsByTagName('input');
+arr = []
+
+for(var i = 0; i < imgs.length; i++) {
+    imgs[i].addEventListener('click', function(e){
+        if (e.target && e.target.id){ //dynamic loading...event delegation
+            e.preventDefault()
+            let giftitle = document.getElementById(e.target.id).title
+            giftitle = giftitle.replace("GIF","").replace("By","")
+            console.log(giftitle)
+            let words = giftitle.split(" ")
+            let query = giftitle
+            if ( words.length > 0 ){
+                query = words.splice(0,2).join(" ")
+            }
+            gifInput.value = query
+            console.log(gifInput.value)
+            loadmusic()
+            loadGifQuery()
+    } 
+    }, true);
+}
