@@ -84,7 +84,7 @@ getrandom = (jsonfiledata)=>{
 
 loadIntro = ()=>{
     
-        random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","eminem","kal ho na ho","hotline bling","koi mil gaya","dilwale","mission impossible"]
+        random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","pewdiepie","eminem","kal ho na ho","hotline bling","koi mil gaya","dilwale","mission impossible"]
         gifInput.value = random[Math.floor(Math.random() * random.length)];
         loadmusic()
         loadGifQuery()
