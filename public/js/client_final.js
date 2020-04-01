@@ -36,7 +36,7 @@ loadGifQuery = ()=>{
         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
         .join(' ');
         //document.querySelector('#gifholder_link').href = payload.data[0].images.downsized_medium.url
-        document.querySelector('#gifholder').src = payload.data[0].images.downsized_medium.url
+        document.querySelector('#gifholder').src = payload.data[0].images.fixed_height.url
         document.querySelector('#gifholder').title = payload.data[0].title
         createHTML(payload.data)
     }
@@ -48,7 +48,7 @@ createHTML = (a)=>{
     for(var i=1; i<a.length;i++){
         var s = i.toString(10)
         //document.querySelector('#gifholder'+s+'_link').href = a[i].images.original.url
-        document.querySelector('#gifholder'+s).src = a[i].images.original.url
+        document.querySelector('#gifholder'+s).src = a[i].images.fixed_width.url
         document.querySelector('#gifholder'+s).title = a[i].title
     }
 }
@@ -56,7 +56,7 @@ createHTML = (a)=>{
 
 instagif.addEventListener('click',(e)=>{
     e.preventDefault()
-    random = ["joey","trump","beiber","macklemore","putin","tom cruise","chandler","sacred games","the office","mark zuckerburg","facepalm","dab","bollywood","cute baby","the social network"]
+    random = ["Joey","Trump","Beiber","Macklemore","putin","Game of Thrones","Tom Cruise","Chandler","Uptown Funk","Sacred Games","The Office","Mark Zuckerburg","Facepalm","Dab","Bollywood","Cute Baby","The Social Network"]
     gifInput.value =  random[Math.floor(Math.random() * random.length)]
     loadmusic()
     loadGifQuery()
@@ -84,7 +84,7 @@ getrandom = (jsonfiledata)=>{
 
 loadIntro = ()=>{
     
-        random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","pewdiepie","eminem","kal ho na ho","hotline bling","koi mil gaya","dilwale","mission impossible"]
+        random = ["dostana","sholay","kabir singh","ariana","dil chahta hai","pewdiepie","eminem","kal ho na ho","hotline bling","koi mil gaya","dilwale","miguel herrera"]
         gifInput.value = random[Math.floor(Math.random() * random.length)];
         loadmusic()
         loadGifQuery()
@@ -100,7 +100,7 @@ musicBtn.addEventListener('click',(e)=>{
     {   
         if (firstTimeOnLoad)
         {
-            loadmusic()
+            loadmusic()//coz you dont want to load new music everytime you hut the button
             firstTimeOnLoad = false
         }
         document.getElementById('musicbtn').style.color = '#bdbdbd'
