@@ -7,7 +7,7 @@ const musicBtn = document.querySelector('#musicbtn')
 const gifurl = 'https://api.giphy.com/v1/gifs/search?api_key=Upu1PbcVEcikCbr4wFjRcrND4OeSfbIS&limit=7&q='
 let imgs = document.getElementsByTagName("img")
 
-window.addEventListener('load', (e)=>{
+document.addEventListener('DOMContentLoaded', (e)=>{
     //e.preventDefault()
     setTimeout(()=>{
         loadIntro()
