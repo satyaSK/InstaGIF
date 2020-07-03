@@ -1,2 +1,2 @@
 # InstaGIF
-Fetch and play with GIF's real-time using asynchronous javascript and JSON, Using the Giphy public API.
+Small weekend project to fetch and play with GIF's in real-time with music. Used async fetch requests and JSON with the Giphy public API and Deezer API. Check it out at: instagif.herokuapp.com
